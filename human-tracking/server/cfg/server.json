@@ -1,0 +1,19 @@
+{
+  // Path of a video to be used as a frame source. Alternatively, can be
+  // a template path of a frame series, e.g. "frame-series/%03d.png".
+  // If not present, the first local camera is used as a frame source.
+  "videoFile": "videos/simulation_cam_0.avi",
+
+  // A target is considered occluded if less than this fraction of it is
+  // visibile
+  "visibilityThreshold": 0.4,
+
+  // Camera calibration: intrinsics and extrinsics
+  "intrinsics" : [576.725, 0, 377.257, 0.0,
+                  0, 576.578, 239.146, 0.0,
+                  0, 0, 1, 0.0],
+  "extrinsics" : [-0.707843, 0.702799, 0.070933, -180.708,
+                  0.317002, 0.405797, -0.857227, -459.278,
+                  -0.631243, -0.584296, -0.51003, 7593.44,
+                  0, 0, 0, 1]
+}
