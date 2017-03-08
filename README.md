@@ -1,6 +1,51 @@
 # smartcamera
 Code for the Raspberry pi based Image Processing Unit and 2 example applications
 
+
+### Introduction ###
+
+When developing for such low-power devices as Raspberry Pi,
+cross-compilation is usually a must. Otherwise builds — even incremental
+— take so much time that continuous testing of code changes becomes
+difficult. The good thing is that nowadays it's quite easy to set up
+a toolchain to cross-compile for Raspberry Pi, especially if one uses
+Linux with CMake.
+
+@namespace glipf::sources
+
+Frame sources provide image data to be processed. The framework supports
+2 types of frame sources: video files (OpenCvVideoSource) and cameras
+(V4L2Camera and OpenCvCamera). The former are useful for testing, the
+latter are needed in real-world scenarios.
+
+The *GL Image Processing Framework* is a collection of low-level image
+processing algorithms implemented using OpenGL ES 2.0-based GPGPU
+techniques, along with utilities for acquiring, displaying, and saving
+images. This page briefly introduces GLIPF's major components, and links
+to their detailed documentation.
+
+[Build instructions](build-instructions.md) and
+[cross-compilation information](cross-compilation.md) can be found on
+separate pages.
+
+### Frame Sources ###
+
+Frame sources provide image data to be processed. The framework supports
+2 types of frame sources: video files and cameras. The former are useful
+for testing, the latter are needed in real-world scenarios.
+
+### Image Processors ###
+
+Image processors are at the core of the framework: they implement
+low-level image processing algorithms. They accept data returned by
+frame sources as input, and output high-level information extracted from
+it.
+
+### Data Sinks ###
+
+Data sinks are responsible for sharing data produced by the framework
+with the outside world. To achieve that goal, they may publish the data
+on a network, display or save it.
 ## Build Instructions ##
 
 The project consists of a library implementing low-level image
@@ -254,49 +299,4 @@ Unless CMake can't find some libraries in the target environment, you
 should end up with a Makefile and be able to compile the project using
 `make`.
 
-### Summary ###
-
-When developing for such low-power devices as Raspberry Pi,
-cross-compilation is usually a must. Otherwise builds — even incremental
-— take so much time that continuous testing of code changes becomes
-difficult. The good thing is that nowadays it's quite easy to set up
-a toolchain to cross-compile for Raspberry Pi, especially if one uses
-Linux with CMake.
-
-
-@namespace glipf::sources
-
-Frame sources provide image data to be processed. The framework supports
-2 types of frame sources: video files (OpenCvVideoSource) and cameras
-(V4L2Camera and OpenCvCamera). The former are useful for testing, the
-latter are needed in real-world scenarios.
-
-The *GL Image Processing Framework* is a collection of low-level image
-processing algorithms implemented using OpenGL ES 2.0-based GPGPU
-techniques, along with utilities for acquiring, displaying, and saving
-images. This page briefly introduces GLIPF's major components, and links
-to their detailed documentation.
-
-[Build instructions](build-instructions.md) and
-[cross-compilation information](cross-compilation.md) can be found on
-separate pages.
-
-### Frame Sources ###
-
-Frame sources provide image data to be processed. The framework supports
-2 types of frame sources: video files and cameras. The former are useful
-for testing, the latter are needed in real-world scenarios.
-
-### Image Processors ###
-
-Image processors are at the core of the framework: they implement
-low-level image processing algorithms. They accept data returned by
-frame sources as input, and output high-level information extracted from
-it.
-
-### Data Sinks ###
-
-Data sinks are responsible for sharing data produced by the framework
-with the outside world. To achieve that goal, they may publish the data
-on a network, display or save it.
 
